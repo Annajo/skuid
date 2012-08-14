@@ -13,25 +13,27 @@ Skuid is a managed package that is installed into a Force.com org.  To get start
 
 Once you're set up with your Force.com org, install Skuid from the App Exchange.
 
-Reference
----------
+Building Pages
+--------------
 
-### Building Pages
+### Getting Started with the Page Builder
 
-> #### Components
+### Components
 
-> #### Models
+### Models
 
-> Models in Skuid retrieve data via SOQL from the Force.com database.  They can then be used in components to reference that data.
+Models in Skuid retrieve data via SOQL from the Force.com database.  They can then be used in components to reference that data.
 
-> > ##### Model Fields
+##### Model Fields
 
-> > ##### Model Conditions
+##### Model Conditions
 
-> #### Labels
+#### Labels
 
-> Labels in Skuid allow you to access Custom Labels from your org and add them to pages.
+Labels in Skuid allow you to access Custom Labels from your org and add them to pages.
 
-### Overriding Default Pages
+Overriding Default Pages
+------------------------
 
-### Extending Skuid
+Extending Skuid
+---------------
