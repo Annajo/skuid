@@ -1,5 +1,7 @@
 <a href="">Developers Guide</a>
 <div class="subnav">
+	{{ page.url }}
+	{{ page.title }}
 	<a href="">Getting Started</a><br/>
 	<a href="">Creating a Skuid Module</a><br/>
 	<a href="">Creating a Skuid Component</a><br/>
