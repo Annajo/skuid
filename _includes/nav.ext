@@ -7,6 +7,7 @@
 </div>
 <a {% if page.url == '/apireference.html' %}class="active" {% endif %}href="/skuid/apireference.html">API Reference</a>
 <div class="subnav">
+	<a {% if page.url == '/apibuilder.html' %}class="active" {% endif %}href="/skuid/apibuilder.html">skuid.builder</a><br/>
 	<a {% if page.url == '/apilabel.html' %}class="active" {% endif %}href="/skuid/apilabel.html">skuid.label</a><br/>
 	<a {% if page.url == '/apimodel.html' %}class="active" {% endif %}href="/skuid/apimodel.html">skuid.model</a><br/>
 	<a {% if page.url == '/apipage.html' %}class="active" {% endif %}href="/skuid/apipage.html">skuid.page</a><br/>
