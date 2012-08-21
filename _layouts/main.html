@@ -23,6 +23,9 @@
           <li><a href="http://www.skoodat.com">About<strong>Skoodat</strong></a></li>
           <li><a href="http://github.com/plusplusben/skuid">View On<strong>GitHub</strong></a></li>
         </ul>
+        <div class="nav">
+        	{% include nav.ext %}
+        </div>
       </header>
       <section>
       	{{ content | unindent | markdownify }}
