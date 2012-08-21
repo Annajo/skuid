@@ -1,20 +1,23 @@
 <a href="">Developers Guide</a>
 <div class="subnav">
-	<a href="">Getting Started</a>
-	<a href="">Creating a Skuid Module</a>
-	<a href="">Creating a Skuid Component</a>
+	<a href="">Getting Started</a><br/>
+	<a href="">Creating a Skuid Module</a><br/>
+	<a href="">Creating a Skuid Component</a><br/>
+	<br/>
 </div>
 <a href="">API Reference</a>
 <div class="subnav">
-	<a href="">skuid.label</a>
-	<a href="">skuid.model</a>
-	<a href="">skuid.snippet</a>
-	<a href="">skuid.time</a>
-	<a href="">skuid.ui</a>
-	<a href="">skuid.utils</a>
+	<a href="">skuid.label</a><br/>
+	<a href="">skuid.model</a><br/>
+	<a href="">skuid.snippet</a><br/>
+	<a href="">skuid.time</a><br/>
+	<a href="">skuid.ui</a><br/>
+	<a href="">skuid.utils</a><br/>
+	<br/>
 </div>
 <a href="">Code Samples</a>
 <div class="subnav">
-	<a href="">Simple Map Component</a>
-	<a href="">Calendar Component</a>
+	<a href="">Simple Map Component</a><br/>
+	<a href="">Calendar Component</a><br/>
+	<br/>
 </div>
