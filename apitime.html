@@ -6,4 +6,12 @@ title: skuid.time
 skuid.time
 =================
 
-This is a test.
+OBJECT: skuid.time
+METHODS:
+	-parseSFDate(sfDate): takes a Salesforce Date string and converts it to a JavaScript Date object
+	-getSFDate(jsDate): takes a JavaScript Date Object and converts it to a Salesforce Date string
+	-makeFormattedDate(sfDate): takes a Salesforce Date string and constructs a MM/DD/YYYY formatted string
+  -makeFormattedDateFromJS(jsDate): takes a JavaScript Date object and formats it in MM/DD/YYYY formatted string
+	-parseSFDateTime(sfDateTime): takes a Salesforce DateTime String and converts it to a JavaScript Date object
+	-getSFDateTime(jsDate): takes a JavaScript Date object and converts it to a Salesforce Date string
+	-getSFDBDateTime(jsDate): takes a JavaScript Date object and converts it to a SOQL-compatible Datetime string
