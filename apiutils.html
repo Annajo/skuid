@@ -6,26 +6,30 @@ title: skuid.utils
 skuid.utils Object
 =================
 
-## CLASSES:
+## CLASSES
 
 ### SelectItem Class
 
 #### Constructor
 
-##### `new SelectItem()`
+##### `new SelectItem( options )`
+Creates a new SelectItem that can be added to a SelectList using the `addItem()` or `addItems()` methods on a SelectList.
+The options object has 3 properties.  `value` is the unique identifier associated with this item.  `label` is what is
+displayed to the screen.  `isSelected` determines whether or not this particular item is selected.
 
-#### Methods
+#### Prototype Methods
 
-##### `SelectItem.prototype.id`
-blah blah
+##### `id()`
+Returns the Globally Unique Identifier for this SelectItem.
 
 ### SelectList Class
 
 #### Constructor
 
 ##### `new SelectList()`
+Creates a new SelectList.
 
-#### Methods
+#### Prototype Methods
 
 ##### `SelectList.prototype.addItem()`
 Adds an item to the list.
