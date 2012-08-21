@@ -1,24 +1,24 @@
-<a class="{% if page.url == '/index.html' %}active{% endif %}" href="/skuid/">Developer's Guide</a>
+<a {% if page.url == '/index.html' %}class="active" {% endif %}href="/skuid/">Developer's Guide</a>
 <div class="subnav">
-	<a class="{% if page.url == '/gettingstarted.html' %}active{% endif %}" href="/skuid/gettingstarted.html">Getting Started</a><br/>
-	<a href="">Creating a Skuid Module</a><br/>
-	<a href="">Creating a Skuid Component</a><br/>
+	<a {% if page.url == '/devgettingstarted.html' %}class="active" {% endif %}href="/skuid/gettingstarted.html">Getting Started</a><br/>
+	<a {% if page.url == '/devcreatemodule.html' %}class="active" {% endif %}href="/skuid/devcreatemodule.html">Creating a Skuid Module</a><br/>
+	<a {% if page.url == '/devcreatecomponent.html' %}class="active" {% endif %}href="/skuid/devcreatecomponent.html">Creating a Skuid Component</a><br/>
 	<br/>
 </div>
-<a href="">API Reference</a>
+<a {% if page.url == '/apireference.html' %}class="active" {% endif %}href="/skuid/apireference.html">API Reference</a>
 <div class="subnav">
-	<a href="">skuid.label</a><br/>
-	<a href="">skuid.model</a><br/>
-	<a href="">skuid.page</a><br/>
-	<a href="">skuid.snippet</a><br/>
-	<a href="">skuid.time</a><br/>
-	<a href="">skuid.ui</a><br/>
-	<a href="">skuid.utils</a><br/>
+	<a {% if page.url == '/apilabel.html' %}class="active" {% endif %}href="/skuid/apilabel.html">skuid.label</a><br/>
+	<a {% if page.url == '/apimodel.html' %}class="active" {% endif %}href="/skuid/apimodel.html">skuid.model</a><br/>
+	<a {% if page.url == '/apipage.html' %}class="active" {% endif %}href="/skuid/apipage.html">skuid.page</a><br/>
+	<a {% if page.url == '/apisnippet.html' %}class="active" {% endif %}href="/skuid/apisnippet.html">skuid.snippet</a><br/>
+	<a {% if page.url == '/apitime.html' %}class="active" {% endif %}href="/skuid/apitime.html">skuid.time</a><br/>
+	<a {% if page.url == '/apiui.html' %}class="active" {% endif %}href="/skuid/apiui.html">skuid.ui</a><br/>
+	<a {% if page.url == '/apiutils.html' %}class="active" {% endif %}href="/skuid/apiutils.html">skuid.utils</a><br/>
 	<br/>
 </div>
-<a href="">Code Samples</a>
+<a {% if page.url == '/samples.html' %}class="active" {% endif %}href="/skuid/samples.html">Code Samples</a>
 <div class="subnav">
-	<a href="">Simple Map Component</a><br/>
-	<a href="">Calendar Component</a><br/>
+	<a {% if page.url == '/samplemap.html' %}class="active" {% endif %}href="/skuid/samplemap.html">Simple Map Component</a><br/>
+	<a {% if page.url == '/samplecalendar.html' %}class="active" {% endif %}href="/skuid/samplecalendar.html">Calendar Component</a><br/>
 	<br/>
 </div>
