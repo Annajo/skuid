@@ -1,8 +1,6 @@
-<a href="">Developer's Guide</a>
+<a class="{% if page.url == '/index.html' %}active{% endif %}" href="/">Developer's Guide</a>
 <div class="subnav">
-	{{ page.url }}
-	{{ page.title }}
-	<a href="">Getting Started</a><br/>
+	<a class="{% if page.url == '/gettingstarted.html' %}active{% endif %}" href="/gettingstarted.html">Getting Started</a><br/>
 	<a href="">Creating a Skuid Module</a><br/>
 	<a href="">Creating a Skuid Component</a><br/>
 	<br/>
