@@ -1,6 +1,6 @@
 <a {% if page.url == '/index.html' %}class="active" {% endif %}href="/skuid/">Developer's Guide</a>
 <div class="subnav">
-	<a {% if page.url == '/devgettingstarted.html' %}class="active" {% endif %}href="/skuid/gettingstarted.html">Getting Started</a><br/>
+	<a {% if page.url == '/devgettingstarted.html' %}class="active" {% endif %}href="/skuid/devgettingstarted.html">Getting Started</a><br/>
 	<a {% if page.url == '/devcreatemodule.html' %}class="active" {% endif %}href="/skuid/devcreatemodule.html">Creating a Skuid Module</a><br/>
 	<a {% if page.url == '/devcreatecomponent.html' %}class="active" {% endif %}href="/skuid/devcreatecomponent.html">Creating a Skuid Component</a><br/>
 	<br/>
