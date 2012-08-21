@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Minimal by Steve Smith</title>
+    <title>{% if page.title %} {{ page.title }} | {% endif %} Skuid by Skoodat</title>
     
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,7 +15,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <img src="images/skuid.png"/>
+        <a href="http://plusplusben.github.com/skuid"><img src="images/skuid.png"/></a>
         <p>Scalable Kit for User Interface Development</p>
         <p class="view"><a href="http://github.com/plusplusben/skuid">View the Project on GitHub</a></p>
         <ul>
@@ -30,7 +30,7 @@
       <section>
       	{{ content | unindent | markdownify }}
       <footer>
-        <p>This project is maintained by <a href="http://github.com/plusplusben">Ben Hubbard</a></p>
+        <p><a href="http://www.skoodat.com/skuid">Skuid</a> is a product of <a href="http://www.skoodat.com">Skoodat</a></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
