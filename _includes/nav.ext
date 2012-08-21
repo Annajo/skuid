@@ -1,4 +1,4 @@
-<a href="">Developers Guide</a>
+<a href="">Developer's Guide</a>
 <div class="subnav">
 	{{ page.url }}
 	{{ page.title }}
@@ -11,6 +11,7 @@
 <div class="subnav">
 	<a href="">skuid.label</a><br/>
 	<a href="">skuid.model</a><br/>
+	<a href="">skuid.page</a><br/>
 	<a href="">skuid.snippet</a><br/>
 	<a href="">skuid.time</a><br/>
 	<a href="">skuid.ui</a><br/>
