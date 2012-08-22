@@ -9,6 +9,10 @@ skuid.ui Object
 ## Classes
 ### Editor Class
 #### Constructor
+##### `new skuid.ui.Editor( parentElement, options )`
+Instantiates a new editor. `parentElement` is the parent dom element that this
+editor will attach itself to. The `options.showSaveCancel` property will tell the
+editor whether or not to create a save and cancel button for this editor.
 #### Prototype Methods
 ##### `registerModel( model )`
 Indicates to a model that this editor will be editing it. Once registered,
@@ -24,6 +28,7 @@ Cancels all models associated with this editor.
 Skuid Editors have for prototype methods that can be overridden or extended.
 The four methods are `handleChange()`, `handleDataRefresh()`, `handleSave()` and
 `handleCancel()`.
+
 {% highlight javascript %}
 // Instantiate a new skuid.ui.Editor
 var myeditor = new skuid.ui.Editor(parentElement);
@@ -39,5 +44,6 @@ myeditor.handleChange = function() {
 	// Handle the change
 }
 {% endhighlight %}
+
 
 
