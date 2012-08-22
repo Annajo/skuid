@@ -3,7 +3,18 @@ layout: main
 title: skuid.builder
 ---
 
-skuid.builder
+skuid.builder Object
 =================
+This API is not used when creating the actual functionality of components. Instead,
+it is used to create component *builders*.  Builders define what a component
+looks like in the page builder.
+## Classes
+### Builder Class
+#### Constructor
+##### `new skuid.builder.Builder( options )`
 
-Coming Soon.
+## Methods
+##### `registerBuilder( builder )`
+Adds a builder to the list of builders that can be used by the page builder to
+create components.
+
