@@ -6,4 +6,33 @@ title: Creating a Skuid Module
 Creating a Skuid Module
 =================
 
-## First Steps
+## Overview
+Creating a Skuid Module allows you to do 2 things:
++	Include your Skuid pages in an AppExchange package that extends Skuid
++	Create and use custom Skuid components
+
+You don't need to have an AppExchange package to create and use custom components, but you do still need to create a Module.
+
+## Creating a Module
+
+### Choose a Module Name
+The first step is to choose a Module name. If you're developing a *managed* AppExchange package, your Module name will need to correspond to your package's namespace, e.g. if your namespace is 'AcmeRecruiting1', your Module name should also be 'AcmeRecruiting1'. 
+
+### Register your Module with Skuid
+Next, you'll need to add your Module name as one of the options in the Skuid Page object's Module picklist field. 
+
+1.	Go to Setup > Create > Custom Objects > Page.
+2.	Scroll down to the nexus__Module__c custom field, and click on its link under the "Field Label" column.
+3.	Under Picklist Options, click "New".
+4.	Enter your Module's name, and click "Save".
+
+### (ISV's Only) Using Your Module's Pages in Customer Orgs
+*This section need only be read by ISV's intending to include their Skuid pages in a managed package that extends Skuid*. 
+
+Because extension packages cannot add additional Picklist Values to a Picklist owned by a base package, you'll need to manually add in your Module's name as a Picklist value in whatever org the package is installed into (not ideal, we know, but we're working on an alternate way). For ISV's using Trialforce, all you have to do is to add your Module name as a picklist value in your Trialforce template. 
+
+## Adding Custom Components to your Module
+If you just want to be able to include your Module in your Managed Package, and don't have any custom Skuid components, that's all there is to it. But if you have custom components, you'll need to follow these steps as well.
+
+### Create a Static Resource to hold your Module's JavaScript
+As you'll learn in the tutorial on [creating a custom Skuid component](http://plusplusben.github.com/skuid/devcreatecomponent.html), we'll 
