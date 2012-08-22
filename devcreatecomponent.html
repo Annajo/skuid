@@ -11,7 +11,7 @@ We think you'll find that Skuid's standard components are pretty rockin', and ju
 
 But we think Skuid's real power lies in *you*, the developers, and how you take it and extend it. We've been using Skuid to build custom components for our own apps for the past year, and it's not only dramatically decreased the time to build new apps, but revolutionized our ability to answer customer requests for one-off customizations and tweaks. 
 
-If you, developers of new components, follow our lead in making your components are built to be massively-customizable from the ground up, we think you'll reap the rewards from astonished, thoroughly satisfied customers.
+If you, developers of new components, follow our lead in making your components  massively-customizable from the ground up, we think you'll reap the rewards from astonished, thoroughly satisfied customers.
 
 That said, what sort of 'custom' components could you make? Here are some ideas:
 +	A Google Map component that displays arbitrary data fields from an arbitrary model
@@ -21,18 +21,22 @@ Let your creativity run free! We're sure you'll surprise us with your ideas.
 
 Now, on to the nuts and bolts.
 
-## The Development Environment
-### Defining your Component(s) in Apex
+## Your First Component
+### Register your Component in Apex
 For Skuid to know about your custom components, you'll need to register them in Apex. To do this, you need to create a new Apex Class that either implements the 'nexus.NexusComponent' interface, or extends our most basic Skuid component implementation class: 'nexus.NexusComponentImpl'. Here's an example:
 
 {% highlight java %}
 
-global with sharing class CoolComponent extends nexus.NexusComponentImpl {
+global with sharing class HelloWorld 
+	extends nexus.NexusComponentImpl {
     
-    // This method generates the HTML and JavaScript for the Component
+    // This method generates an instance of our component,
+    // which typically includes HTML, CSS, and JavaScript
+    // Right now, though, we're just spitting out a div
+    // with an auto-generated id.
     global override void generate(){
-        this.htmlOutput = '<div id="' + componentId + '"></div>';
-        this.jsOutput += '';
+        this.htmlOutput = 
+        	'<div id="' + componentId + '">Hello World</div>';
     }
     
     // This method can optionally be used by the Skuid Page Builder
@@ -47,5 +51,44 @@ global with sharing class CoolComponent extends nexus.NexusComponentImpl {
 
 {% endhighlight %}
 
-### Create Static Resources to hold your Module's JavaScript and CSS
-As you'll learn in the tutorial on [creating a custom Skuid component](), we recommend storing all of your Module's Java
+### Register your Component's Builder in JavaScript
+For your Component to show up in the Skuid Page Builder, you'll need to define a 'Builder' for your Component in JavaScript. 
+
+This JavaScript will need to be stored in a single Static Resource that contains all of the JavaScript for all of the Components in your Module (see [Creating a Skuid Module](http://plusplusben.github.com/skuid/devcreatemodule.html)). This Static Resource must be named '<ModuleName>BuildersJS' for Skuid to pick up on it. For instance, if your Module Name is 'recruiting', this file should be called 'RecruitingBuildersJS'. 
+
+So what should this 'Builder' file look like? Here's a stripped-down example (for more detail, see our sample Map component and the [skuid.builder API docs](http://plusplusben.github.com/skuid/apibuilder.html)):
+
+{% highlight javascript %}
+
+(function($) {
+
+skuid.builder.registerBuilder(new skuid.builder.Builder({
+	id : 'helloworld',
+	name : 'Hello World',
+	icon : 'ui-silk-tux',
+	description : 'This component says Hello World to Penguins.',
+	componentRenderer: function(component) {
+		var self = component;			
+		component.header.html(component.builder.name);
+	},
+	propertiesRenderer : function (propertiesObj,component) {
+		propertiesObj.header.text('Hello World Component Properties');
+	},
+	defaultStateGenerator : function() {
+		return $('<helloworld>');
+	}
+}));
+
+})(jQuery);
+
+{% endhighlight %}
+
+That's it! Save this file as the body of your '<ModuleName>BuildersJS' Static Resource, and a Component called 'Hello World' will show up in the 'Components' tab of the Skuid Page Builder.
+
+## Going Deeper
+### Make your Component a jQuery plugin
+Coming Soon!
+### Customize your Component's Builder
+Coming Soon!
+
+
