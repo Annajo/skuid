@@ -5,5 +5,11 @@ title: skuid.snippet
 
 skuid.snippet
 =================
-
-Coming Soon.
+The snippet object allows components to register bits of javascript code that
+can be called by other components.  This is used when you want one component
+to be able to extend the functionality of another component.
+## Methods
+##### `registerSnippet( snippetName, snippetFunction )`
+Register the `snippetFunction` under the name `snippetName`
+##### `getSnippet( snippetName )`
+Retrieve a code snippet.
