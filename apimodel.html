@@ -20,3 +20,11 @@ Returns a Javascript object representing a field in this model where `fieldName`
 is the API name of the field requested.
 ##### `getFirstRow()`
 Returns the first row in this model.
+#### Examples
+    // Get an instance of one of the models described in our page metadata
+    var mymodel = skuid.model.getModel('ExampleModel');
+    
+    // Get the first row of the model
+    var firstrow = mymodel.getFirstRow();
+    
+## Methods
