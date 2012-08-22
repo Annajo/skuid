@@ -6,4 +6,46 @@ title: Creating a Skuid Component
 Creating a Skuid Component
 =================
 
-## First Steps
+## Intro
+We think you'll find that Skuid's standard components are pretty rockin', and just by themselves you could do a fairly comprehensive overhaul of your Force.com user interface. 
+
+But we think Skuid's real power lies in *you*, the developers, and how you take it and extend it. We've been using Skuid to build custom components for our own apps for the past year, and it's not only dramatically decreased the time to build new apps, but revolutionized our ability to answer customer requests for one-off customizations and tweaks. 
+
+If you, developers of new components, follow our lead in making your components are built to be massively-customizable from the ground up, we think you'll reap the rewards from astonished, thoroughly satisfied customers.
+
+That said, what sort of 'custom' components could you make? Here are some ideas:
++	A Google Map component that displays arbitrary data fields from an arbitrary model
++	A Tree component for displaying hierarchical data
+
+Let your creativity run free! We're sure you'll surprise us with your ideas. 
+
+Now, on to the nuts and bolts.
+
+## The Development Environment
+### Defining your Component(s) in Apex
+For Skuid to know about your custom components, you'll need to register them in Apex. To do this, you need to create a new Apex Class that either implements the 'nexus.NexusComponent' interface, or extends our most basic Skuid component implementation class: 'nexus.NexusComponentImpl'. Here's an example:
+
+{% highlight java %}
+
+global with sharing class CoolComponent extends nexus.NexusComponentImpl {
+    
+    // This method generates the HTML and JavaScript for the Component
+    global override void generate(){
+        this.htmlOutput = '<div id="' + componentId + '"></div>';
+        this.jsOutput += '';
+    }
+    
+    // This method can optionally be used by the Skuid Page Builder
+    // to validate that your component's XML definition is valid
+    // before allowing a user to save a page that uses that component.
+    // By default, we just return an empty list of validation errors.
+    global override List<nexus.ValidationError> validate() {
+        return new List<nexus.ValidationError>();
+    }
+    
+}
+
+{% endhighlight %}
+
+### Create Static Resources to hold your Module's JavaScript and CSS
+As you'll learn in the tutorial on [creating a custom Skuid component](), we recommend storing all of your Module's Java
