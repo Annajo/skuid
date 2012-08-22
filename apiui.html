@@ -3,7 +3,41 @@ layout: main
 title: skuid.ui
 ---
 
-skuid.ui
+skuid.ui Object
 =================
 
-Coming Soon.
+## Classes
+### Editor Class
+#### Constructor
+#### Prototype Methods
+##### `registerModel( model )`
+Indicates to a model that this editor will be editing it. Once registered,
+an editor will be notified when changes are made to the model. If a change is
+made, `handleChange()` will be called. If new data comes in from the server,
+`handleDataRefresh()` will be called. If the model is saved or cancelled, 
+`handleSave()` or `handleCancel()` will be called.
+##### `save()`
+Saves all models associated with this editor.
+##### `cancel()`
+Cancels all models associated with this editor.
+#### Overriding and Extending Editors
+Skuid Editors have for prototype methods that can be overridden or extended.
+The four methods are `handleChange()`, `handleDataRefresh()`, `handleSave()` and
+`handleCancel()`.
+{% highlight javascript %}
+// Instantiate a new skuid.ui.Editor
+var myeditor = new skuid.ui.Editor(parentElement);
+
+// Override the default handleChange() functionality
+myeditor.handleChange = function() {
+	// Handle the change
+}
+
+// Extend the default handleChange() functionality
+myeditor.handleChange = function() {
+	skuid.ui.Editor.prototype.handleChange.call(myeditor);
+	// Handle the change
+}
+{% endhighlight %}
+
+
