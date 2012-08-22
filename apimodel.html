@@ -6,4 +6,17 @@ title: skuid.model
 skuid.model
 =================
 
-This is a test.
+## Classes
+### Model Class
+#### Constructor
+Use `skuid.model.getModel( modelId )` to retrieve an instance of a model where 
+`modelId` is the id given to the model in the page builder.
+#### Prototype Methods
+##### `getFieldValue( row, field )`
+Returns the value for a particular field in a row from this model. Use model 
+methods that return rows such as `getFirstRow()` to retrieve an instance of a row.
+##### `getField( fieldName )`
+Returns a Javascript object representing a field in this model where `fieldName` 
+is the API name of the field requested.
+##### `getFirstRow()`
+Returns the first row in this model.
