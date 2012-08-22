@@ -5,7 +5,7 @@ title: skuid.utils
 
 skuid.utils Object
 =================
-
+<!---
 ## CLASSES
 
 ### SelectItem Class
@@ -52,11 +52,21 @@ Returns the number of items contained in the SelectList.
 ##### `SelectList.prototype.selectItemAtIndex( index )`
 
 ##### `SelectList.prototype.indexOf( item:SelectItem )`
-
+-->
+The skuid.utils object provides convenience methods for commonly used functionality
+in Skuid.
 ## METHODS
-
 ##### `decodeHTML( value )`
 Decodes html characters like &amp;amp; into their actual character.
-
 ##### `encodeHTML( value )`
 Encodes html characters like & into their encoded value like &amp;amp;.
+##### `registerPlugin( name, methods )`
+Registers a jQuery plugin in the standard skuid component format.
+{% highlight javascript %}
+var methods = {
+    init : function( xmlDef ) {
+    	// Build the component
+    }
+};
+skuid.utils.registerPlugin('pluginName',methods);
+{% endhighlight %}

@@ -20,14 +20,46 @@ Returns a Javascript object representing a field in this model where `fieldName`
 is the API name of the field requested.
 ##### `getFirstRow()`
 Returns the first row in this model.
+##### `getRowById( id )`
+Returns the row in this model identified by the given `id`.
+##### `updateData( callback )`
+Requests an update for this model from the server. An optional callback can
+be sent in and it will be run after the update is complete.
+##### `createRow( options )`
+Creates a new row and attaches it to this model. If options.doAppend is set,
+the row will be added as the last row of the model instead of the first row.
+##### `updateRow( row, field, value )`
+Updates the value of the data for the given row and field. This will not be
+sent to the server until the `save()` method is called.
+##### `deleteRow( row )`
+Marks the given row for deletion. This will not be sent to the server until
+the `save()` method is called.
+##### `undeleteRow( row )`
+Unmarks the given row for deletion. This will not be sent to the server until
+the `save()` method is called.
+##### `cancel()`
+Reverts all changes made to this model since it was last saved or updated.
+##### `save()`
+Sends all changes to this model to the server.
 #### Examples
 
-{% highlight js %}
+{% highlight javascript %}
 // Get an instance of one of the models from the page metadata
 var mymodel = skuid.model.getModel('ExampleModel');
+
 // Get the first row of the model
 var firstrow = mymodel.getFirstRow();
 {% endhighlight %}
 
 ## Methods
+##### `getModel( modelId )`
+Returns an instance of the model corresponding to the given `id`.
+##### `isNewId( id )`
+Returns a boolean depending on whether the id requested is an existing Salesforce
+id or a new temporary id.
+##### `save( models )`
+Sends all changes for the given models to the server.
+##### `updateData( models, callback )`
+Requests an update for the given models from the server. An optional callback
+can be sent in and it will be run after the updates are complete.
 
