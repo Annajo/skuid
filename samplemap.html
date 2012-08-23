@@ -81,6 +81,8 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
 
 ### Map Component JavaScript
 
+Place the following in a 'MapsJS' Static Resource:
+
 {% highlight javascript %}
 
 (function( $ ){
@@ -90,28 +92,15 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
     		
     		var self = this;
     		
-    		console.log('');
-    		console.log('XML DEFINITION OF COMPONENT');
-    		console.log(xmlDef);
-    		
-    		console.log('');
-    		console.log('DOM NODE FOR THIS COMPONENT');
-    		console.log(self);
-    		
     		// Get the model name from the component definition
     		var modelName = xmlDef.attr('model');
     		// Save our pin color to our model
     		self.pinColor = xmlDef.attr('pincolor');
     		
-    		// Get the model from the skuid javascript api
+    		// Use the Skuid JavaScript API
+    		// to grab a reference
+    		// to the requested model
     		self.model = skuid.model.getModel(modelName);
-    		
-    		console.log('');
-    		console.log('MODEL TO USE');
-    		console.log(self.model);
-    		
-    		console.log('');
-    		console.log('');
     		
     		// Draw our Map into our DOM element
     		self.customMap('draw');
@@ -125,14 +114,21 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
     		// and create a marker for each Case
     		self.markers = [];
     		$.each(self.model.data,function() {
-    			self.markers.push('&markers=color:' + self.pinColor + '%7C' + this.Latitude__c + ',' + this.Longitude__c);
+    			self.markers.push(
+    				'&markers=color:' + self.pinColor 
+    				+ '%7C' + this.Latitude__c
+    				 + ',' + this.Longitude__c
+    			);
     		});
     		
     		// Create a map using google static maps api
     		self.googlemap && self.googlemap.remove();
     		self.googlemap = $('<img>')
-    			.attr('src','https://maps.googleapis.com/maps/api/staticmap?size=600x300' + self.markers.join('') + '&maptype=roadmap&sensor=false')		
-    			.css('margin-top','8px')
+    			.attr('src','https://maps.googleapis.com/maps/api/staticmap?size=600x300' 
+    				+ self.markers.join('') 
+    				+ '&maptype=roadmap'
+    				+ '&sensor=false'
+    			).css('margin-top','8px')
     			.appendTo(self);
         }
     }
