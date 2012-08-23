@@ -54,7 +54,7 @@ global with sharing class HelloWorld
 ### Register your Component's Builder in JavaScript
 For your Component to show up in the Skuid Page Builder, you'll need to define a 'Builder' for your Component in JavaScript. 
 
-This JavaScript will need to be stored in a single Static Resource that contains all of the JavaScript for all of the Components in your Module (see [Creating a Skuid Module](http://plusplusben.github.com/skuid/devcreatemodule.html)). This Static Resource must be named '<ModuleName>BuildersJS' for Skuid to pick up on it. For instance, if your Module Name is 'recruiting', this file should be called 'RecruitingBuildersJS'. 
+This JavaScript will need to be stored in a single Static Resource that contains all of the JavaScript for all of the Components in your Module (see [Creating a Skuid Module](http://plusplusben.github.com/skuid/devcreatemodule.html)). This Static Resource must be named '&lt;ModuleName&gt;BuildersJS' for Skuid to pick up on it. For instance, if your Module Name is 'recruiting', this file should be called 'RecruitingBuildersJS'. 
 
 So what should this 'Builder' file look like? Here's a stripped-down example (for more detail, see our sample Map component and the [skuid.builder API docs](http://plusplusben.github.com/skuid/apibuilder.html)):
 
@@ -83,7 +83,7 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
 
 {% endhighlight %}
 
-That's it! Save this file as the body of your '<ModuleName>BuildersJS' Static Resource, and a Component called 'Hello World' will show up in the 'Components' tab of the Skuid Page Builder.
+That's it! Save this file as the body of your '&lt;ModuleName&gt;BuildersJS' Static Resource, and a Component called 'Hello World' will show up in the 'Components' tab of the Skuid Page Builder.
 
 ## Going Deeper
 ### Make your Component a jQuery plugin

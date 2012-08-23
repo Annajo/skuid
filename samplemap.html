@@ -6,4 +6,139 @@ title: Simple Map Component
 Simple Map Component
 =================
 
-Coming Soon.
+## Apex
+
+{% highlight java %}
+
+// Custom Components must extend nexus.NexusComponentImpl
+global with sharing class CustomMap extends nexus.NexusComponentImpl {
+    
+    global override void generate(){
+        this.htmlOutput = '<div id="' + componentId + '"></div>';
+        // Replace this with the NexusUtils function in the next release.
+        this.jsOutput = 'skuid.utils.loadJS(\'' + nexus.NexusUtils.getResourceURL('MapsJS') + '\');\n';
+        this.jsOutput += nexus.NexusUtils.MakePluginString(componentId,'customMap',nexus.NexusUtils.toXmlString(data));
+            
+    }
+    
+    global override List<nexus.ValidationError> validate() {
+        return new List<nexus.ValidationError>();
+    }
+    
+}
+
+{% endhighlight %}
+
+## JavaScript
+
+### Map Builder JavaScript
+
+The following should be included in a 'MapsBuildersJS' Static Resource:
+
+{% highlight javascript %}
+
+(function($) {
+
+skuid.builder.registerBuilder(new skuid.builder.Builder({
+	id : 'custommap',
+	name : 'Custom Map',
+	icon : 'ui-silk-map',
+	description : 'This is a custom component.',
+	componentRenderer: function(component) {
+		var self = component;			
+		component.header.html(component.builder.name);
+	},
+	propertiesRenderer : function (propertiesObj,component) {
+		propertiesObj.header.text('Custom Map Properties');
+		
+		var propsMap = {
+			model : {
+				type : 'model',
+				name : 'Model',
+				required : true,
+				onChange : function(value) {
+					
+				}
+			},
+			pincolor : {
+				type : 'string',
+				name : 'Pin Color'
+			}
+		}
+		
+		var propsEditor = skuid.builder.buildPropsEditor(component.state,propsMap);	
+		propertiesObj.body.append(propsEditor);
+		
+	},
+	defaultStateGenerator : function() {
+		return $('<custommap>');
+	}
+}));
+
+})(jQuery);
+
+{% endhighlight %}
+
+### Map Component JavaScript
+
+{% highlight javascript %}
+
+(function( $ ){
+       
+    var methods = {
+    	init : function (xmlDef) {
+    		
+    		var self = this;
+    		
+    		console.log('');
+    		console.log('XML DEFINITION OF COMPONENT');
+    		console.log(xmlDef);
+    		
+    		console.log('');
+    		console.log('DOM NODE FOR THIS COMPONENT');
+    		console.log(self);
+    		
+    		// Get the model name from the component definition
+    		var modelName = xmlDef.attr('model');
+    		// Save our pin color to our model
+    		self.pinColor = xmlDef.attr('pincolor');
+    		
+    		// Get the model from the skuid javascript api
+    		self.model = skuid.model.getModel(modelName);
+    		
+    		console.log('');
+    		console.log('MODEL TO USE');
+    		console.log(self.model);
+    		
+    		console.log('');
+    		console.log('');
+    		
+    		// Draw our Map into our DOM element
+    		self.customMap('draw');
+    		
+        }, 
+        draw : function() {
+        	
+        	var self = this; 
+        	
+        	// Loop through the Case rows in our model
+    		// and create a marker for each Case
+    		self.markers = [];
+    		$.each(self.model.data,function() {
+    			self.markers.push('&markers=color:' + self.pinColor + '%7C' + this.Latitude__c + ',' + this.Longitude__c);
+    		});
+    		
+    		// Create a map using google static maps api
+    		self.googlemap && self.googlemap.remove();
+    		self.googlemap = $('<img>')
+    			.attr('src','https://maps.googleapis.com/maps/api/staticmap?size=600x300' + self.markers.join('') + '&maptype=roadmap&sensor=false')		
+    			.css('margin-top','8px')
+    			.appendTo(self);
+        }
+    }
+    
+    skuid.registerPlugin('customMap',methods);
+    
+})( jQuery );
+
+{% endhighlight %}
