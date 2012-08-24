@@ -6,7 +6,7 @@
 	<a {% if page.url == '/devcreatecomponent.html' %}class="active" {% endif %}href="/skuid/devcreatecomponent.html">Creating a Skuid Component</a><br/>
 </div>
 {% else %}
-<br/>
+<br/><br/>
 {% endif %}
 <a {% if page.url == '/apireference.html' %}class="active" {% endif %}href="/skuid/apireference.html">API Reference</a>
 {% if page.url contains '/api' %}
@@ -21,7 +21,7 @@
 	<a {% if page.url == '/apiutils.html' %}class="active" {% endif %}href="/skuid/apiutils.html">skuid.utils</a><br/>
 </div>
 {% else %}
-<br/>
+<br/><br/>
 {% endif %}
 <a {% if page.url == '/samples.html' %}class="active" {% endif %}href="/skuid/samples.html">Code Samples</a>
 {% if page.url contains '/sample' %}
@@ -30,5 +30,5 @@
 	<a {% if page.url == '/samplecalendar.html' %}class="active" {% endif %}href="/skuid/samplecalendar.html">Calendar Component</a><br/>
 </div>
 {% else %}
-<br/>
+<br/><br/>
 {% endif %}
