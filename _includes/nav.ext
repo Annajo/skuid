@@ -5,8 +5,9 @@
 	<a {% if page.url == '/devcreatemodule.html' %}class="active" {% endif %}href="/skuid/devcreatemodule.html">Creating a Skuid Module</a><br/>
 	<a {% if page.url == '/devcreatecomponent.html' %}class="active" {% endif %}href="/skuid/devcreatecomponent.html">Creating a Skuid Component</a><br/>
 </div>
-{% endif %}
+{% else %}
 <br/>
+{% endif %}
 <a {% if page.url == '/apireference.html' %}class="active" {% endif %}href="/skuid/apireference.html">API Reference</a>
 {% if page.url contains '/api' %}
 <div class="subnav">
@@ -19,13 +20,15 @@
 	<a {% if page.url == '/apiui.html' %}class="active" {% endif %}href="/skuid/apiui.html">skuid.ui</a><br/>
 	<a {% if page.url == '/apiutils.html' %}class="active" {% endif %}href="/skuid/apiutils.html">skuid.utils</a><br/>
 </div>
-{% endif %}
+{% else %}
 <br/>
+{% endif %}
 <a {% if page.url == '/samples.html' %}class="active" {% endif %}href="/skuid/samples.html">Code Samples</a>
-{% if page.url contains '/samples' %}
+{% if page.url contains '/sample' %}
 <div class="subnav">
 	<a {% if page.url == '/samplemap.html' %}class="active" {% endif %}href="/skuid/samplemap.html">Simple Map Component</a><br/>
 	<a {% if page.url == '/samplecalendar.html' %}class="active" {% endif %}href="/skuid/samplecalendar.html">Calendar Component</a><br/>
 </div>
-{% endif %}
+{% else %}
 <br/>
+{% endif %}
