@@ -24,19 +24,19 @@ The only other step is to add a 'Maps' entry to the Skuid Page object's Module f
 global with sharing class CustomMap extends nexus.NexusComponentImpl {
     
     global override void generate(){
-        this.htmlOutput = '<div id="' + componentId + '"></div>';
+        this.htmlOutput = "<div id=\"" + componentId + "\"></div>";
         // Load in the MapsJS Static Resource file,
         // which contains the code 
         // for our customMap jQuery plugin
-        this.jsOutput = 'skuid.utils.loadJS(\'' 
+        this.jsOutput = "skuid.utils.loadJS(\'" 
         	+ nexus.NexusUtils.getResourceURL('MapsJS')
-        	+ '\');\n';
+        	+ "\');\n";
         // Skuid helper function
         // that takes the div we just created
         // and runs our customMap jQuery plugin on it
         this.jsOutput += nexus.NexusUtils.MakePluginString(
         	componentId, // the DOM element to run our plugin on
-        	'customMap', // The jQuery plugin to run on the element
+        	"customMap", // The jQuery plugin to run on the element
         	nexus.NexusUtils.toXmlString(data) // The <custommap> XML node from our Page Layout
         );
             
