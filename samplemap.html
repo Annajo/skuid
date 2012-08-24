@@ -25,9 +25,20 @@ global with sharing class CustomMap extends nexus.NexusComponentImpl {
     
     global override void generate(){
         this.htmlOutput = '<div id="' + componentId + '"></div>';
-        // Replace this with the NexusUtils function in the next release.
-        this.jsOutput = 'skuid.utils.loadJS(\'' + nexus.NexusUtils.getResourceURL('MapsJS') + '\');\n';
-        this.jsOutput += nexus.NexusUtils.MakePluginString(componentId,'customMap',nexus.NexusUtils.toXmlString(data));
+        // Load in the MapsJS Static Resource file,
+        // which contains the code 
+        // for our customMap jQuery plugin
+        this.jsOutput = 'skuid.utils.loadJS(\'' 
+        	+ nexus.NexusUtils.getResourceURL('MapsJS')
+        	+ '\');\n';
+        // Skuid helper function
+        // that takes the div we just created
+        // and runs our customMap jQuery plugin on it
+        this.jsOutput += nexus.NexusUtils.MakePluginString(
+        	componentId, // the DOM element to run our plugin on
+        	'customMap', // The jQuery plugin to run on the element
+        	nexus.NexusUtils.toXmlString(data) // The <custommap> XML node from our Page Layout
+        );
             
     }
     
@@ -100,6 +111,7 @@ Place the following in a 'MapsJS' Static Resource:
     var methods = {
     	init : function (xmlDef) {
     		
+    		// Lock-in a reference to this jQuery object
     		var self = this;
     		
     		// Get the model name from the component definition
@@ -108,9 +120,31 @@ Place the following in a 'MapsJS' Static Resource:
     		self.pinColor = xmlDef.attr('pincolor');
     		
     		// Use the Skuid JavaScript API
-    		// to grab a reference
-    		// to the requested model
-    		self.model = skuid.model.getModel(modelName);
+    		// to get a reference
+    		// to the requested Model
+			self.model = skuid.model.getModel(modelName);
+    		
+    		// Establish ourselves as a Skuid Editor
+    		self.editor = new skuid.ui.Editor(self,{
+    			showHeader : false
+    		});
+    		// Register that we will be editing the Cases model.
+        	self.editor.registerModel(self.model);
+        	
+        	// Define how we will handle successful 'saves' to our model
+        	self.editor.handleSave = function(modelHasChanged) {
+        		if (modelHasChanged) {
+	    			// Redraw our Map
+	        		self.customMap('draw');
+        		}
+    		};
+    		
+    		// Define how we will handle successful 'refreshes' to our model
+        	self.editor.handleDataRefresh = function() {
+	        		self.customMap('draw');
+    		};
+    		// Make sure our Map is at least a certain height
+    		self.css('min-height','300px');
     		
     		// Draw our Map into our DOM element
     		self.customMap('draw');
