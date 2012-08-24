@@ -307,8 +307,13 @@ footer {
 	line-height: 22pt;
 }
 
+.nav a {
+	display: block;
+}
+
 .subnav {
 	margin-left: 24px;
+	margin-bottom: 8px;
 }
 
 .active {
