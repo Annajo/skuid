@@ -26,3 +26,4 @@
 	<a {% if page.url == '/samplecalendar.html' %}class="active" {% endif %}href="/skuid/samplecalendar.html">Calendar Component</a>
 	{% endif %}
 </div>
+<small>To submit bugs, enhancement requests, or if you just have a question, please add it to the github <a href="http://github.com/plusplusben/skuid/issues">issue tracker</a> for this project.
