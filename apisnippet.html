@@ -8,8 +8,11 @@ skuid.snippet Object
 The snippet object allows components to register bits of javascript code that
 can be called by other components.  This is used when you want one component
 to be able to extend the functionality of another component.
+
+Snippets can be executed by Custom Actions in the PageTitle and Table components. In the 'Snippet' field, enter the name of the Snippet you'd like the Action to execute, and that Snippet's snippetFunction will be run when that Action is executed.
+
 ## Methods
 ##### `registerSnippet( snippetName, snippetFunction )`
-Register the `snippetFunction` under the name `snippetName`
+Register the `snippetFunction` under the name `snippetName`. To avoid snippet name conflicts, you should prefix a namespace to `snippetName`, e.g. 'acme.MyAwesomeSnippet'
 ##### `getSnippet( snippetName )`
-Retrieve a code snippet.
+Retrieve a code snippet. 
