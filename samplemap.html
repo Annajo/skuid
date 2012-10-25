@@ -92,7 +92,7 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
 		
 	},
 	defaultStateGenerator : function() {
-		return $('<custommap>');
+		return skuid.utils.makeXMLDoc('<custommap/>');
 	}
 }));
 
