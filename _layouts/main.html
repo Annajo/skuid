@@ -11,10 +11,435 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
+    <style>
+      /* css grid stuff */
+
+		/* CSS Resets */		
+		html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
+		
+		
+		/* ==================================================================================================================== */
+		/* ! The 1140px Grid V2 by Andy Taylor \ http://cssgrid.net \ http://www.twitter.com/andytlr \ http://www.andytlr.com   */
+		/* ==================================================================================================================== */
+		
+		.container {
+		padding-left: 20px;
+		padding-right: 20px;
+		}
+		
+		.row {
+		width: 100%;
+		max-width: 1140px;
+		min-width: 755px;
+		margin: 0 auto;
+		overflow: hidden;
+		}
+		
+		.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
+		margin-right: 3.8%;
+		float: left;
+		min-height: 1px;
+		}
+		
+		.row .onecol {
+		width: 4.85%;
+		}
+		
+		.row .twocol {
+		width: 13.45%;
+		}
+		
+		.row .threecol {
+		width: 22.05%;
+		}
+		
+		.row .fourcol {
+		width: 30.75%;
+		}
+		
+		.row .fivecol {
+		width: 39.45%;
+		}
+		
+		.row .sixcol {
+		width: 48%;
+		}
+		
+		.row .sevencol {
+		width: 56.75%;
+		}
+		
+		.row .eightcol {
+		width: 65.4%;
+		}
+		
+		.row .ninecol {
+		width: 74.05%;
+		}
+		
+		.row .tencol {
+		width: 82.7%;
+		}
+		
+		.row .elevencol {
+		width: 91.35%;
+		}
+		
+		.row .twelvecol {
+		width: 100%;
+		float: left;
+		}
+		
+		.last {
+		margin-right: 0px;
+		}
+		
+		img, object, embed {
+		max-width: 100%;
+		}
+		
+		img {
+			height: auto;
+		}
+		
+		
+		/* Smaller screens */
+		
+		@media only screen and (max-width: 1023px) {
+		
+			body {
+			font-size: 0.8em;
+			line-height: 1.5em;
+			}
+			
+			}
+		
+		
+		/* Mobile */
+		
+		@media handheld, only screen and (max-width: 767px) {
+		
+			body {
+			font-size: 16px;
+			-webkit-text-size-adjust: none;
+			}
+			
+			.row, body, .container {
+			width: 100%;
+			min-width: 0;
+			margin-left: 0px;
+			margin-right: 0px;
+			padding-left: 0px;
+			padding-right: 0px;
+			}
+			
+			.row .onecol, .row .twocol, .row .threecol, .row .fourcol, .row .fivecol, .row .sixcol, .row .sevencol, .row .eightcol, .row .ninecol, .row .tencol, .row .elevencol, .row .twelvecol {
+			width: auto;
+			float: none;
+			margin-left: 0px;
+			margin-right: 0px;
+			padding-left: 20px;
+			padding-right: 20px;
+			}
+		
+		}
+		
+		
+		
+		
+		
+		
+		/* custom styles */
+		
+		body {
+			font-family: "myriad-pro-n4", "myriad-pro-1", "myriad-pro-2";
+			font-size: 9pt;
+			color: #333;		
+		}
+		
+		h1 {
+			font-family: "myriad-pro-n9", "myriad-pro-1", "myriad-pro-2";
+			font-size: 36pt;
+			color: #666;
+		}
+		
+		h2 {
+			font-family: "myriad-pro-n9", "myriad-pro-1", "myriad-pro-2";
+			font-size: 22pt;
+			margin: 30px 0;
+			color: #333;	
+			display: block;
+			line-height: 1.05em;
+		}
+		
+		h3 {
+			font-family: "myriad-pro-n3", "myriad-pro-1", "myriad-pro-2";
+			font-size: 16pt;
+			margin: 15px 0;
+			color: #1797C0;
+			display: block;
+		}
+		
+		p {
+			font-size: 11pt;
+			line-height: 16pt;
+			margin: 10px 0;
+		}
+		
+		a, a:hover, a:active, a:visited {
+			color: #1797C0;	
+		}
+		
+		h2 > a:hover {
+			color: #1797C0 !important;
+		}
+		
+		.container {
+			position: relative;
+		}
+		
+		.bottom {
+			padding-bottom: 30px;
+		}
+		
+		.top {
+			padding-top: 30px;
+		}
+		
+		.white { 
+			background-color: #FFF; 
+			z-index: 0;	
+		}
+		
+		.lightgrey { 
+			background-color: #EDEDED; 	
+			z-index: 1;	
+		}
+		
+		.medgrey { 
+			background-color: #999; 
+			z-index: 2;	
+		}
+		
+		.darkgrey { 
+			background-color: #333; 
+			color: white;
+			z-index: 3;
+		}
+		
+		.green { 
+			background-color: #03953F; 
+			color: white;
+			z-index: 4;	
+		}
+		
+		.blue {
+			background-color: #1797C0;
+			color: white;
+			z-index: 4;
+		}
+		
+		.blue, .blue h2, .blue p, .medgrey, .medgrey h2, .medgrey p, .darkgrey h2, .darkgrey p {
+			color: white;
+		}
+		
+		.shadow {
+			box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+		}
+		
+		.btnsmall {
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			margin: 15px 0;
+			padding: 10px 20px;	
+			font-size: 16pt;
+			font-weight: bold;
+			cursor: pointer;
+			text-transform: lowercase;
+			white-space: nowrap;	
+			text-align: center;
+		}
+		
+		.btnsmall.white {
+			color: #333;
+		}
+		
+		.btnsmall.lightgrey {	
+			color: #333;
+		}
+		
+		.btnsmall.medgrey {
+			color: white;
+		}
+		
+		.btnsmall.blue {
+			background: rgb(77,188,230); /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRkYmNlNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMxJSIgc3RvcC1jb2xvcj0iIzE3OTdjMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iIzE3OTdjMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDY0ODQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top,  rgba(77,188,230,1) 0%, rgba(23,151,192,1) 31%, rgba(23,151,192,1) 65%, rgba(0,100,132,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(77,188,230,1)), color-stop(31%,rgba(23,151,192,1)), color-stop(65%,rgba(23,151,192,1)), color-stop(100%,rgba(0,100,132,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(77,188,230,1) 0%,rgba(23,151,192,1) 31%,rgba(23,151,192,1) 65%,rgba(0,100,132,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(77,188,230,1) 0%,rgba(23,151,192,1) 31%,rgba(23,151,192,1) 65%,rgba(0,100,132,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(77,188,230,1) 0%,rgba(23,151,192,1) 31%,rgba(23,151,192,1) 65%,rgba(0,100,132,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(77,188,230,1) 0%,rgba(23,151,192,1) 31%,rgba(23,151,192,1) 65%,rgba(0,100,132,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dbce6', endColorstr='#006484',GradientType=0 ); /* IE6-8 */
+		
+			color: white;
+			text-decoration: none;
+		}
+		
+		#skuidheader .ninecol.last {	
+			text-align: right;
+		}
+		
+		.iconcontainer {
+			min-width: 330px;		
+			display: inline-block;
+			white-space: nowrap;
+			padding: 5px 0 0;
+			width: 44.5%;
+		}
+		
+		.socialiconwrapper {
+			/* float: left; */
+			display: inline-block;
+			margin: 0;
+			text-align: center;
+			cursor: pointer;
+			width: 25%;
+			vertical-align: top;
+		}
+		
+		.socialiconwrapper a:hover img {
+			box-shadow: 0px 0px 15px rgba(255,255,255,.85);
+		}
+		
+		.socialiconwrapper a, .socialiconwrapper a:hover {
+			text-decoration: none;
+		}
+		
+		.socialiconwrapper div {
+			color: white;
+			font-size: 12pt;
+		}
+		
+		#skuidheader .row {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		
+		#logowrapper {
+			margin: 8% 0;
+		}
+		
+		#footer p {
+			font-size: 8pt;
+			color: #999;
+		}
+		
+		#footer a {
+			text-decoration: none;
+			color: white;
+		}
+		
+		#footer a:hover {
+			color: #999;
+		}
+		
+		#footernav {
+			margin: auto;
+		}
+		
+		#footernav .item {	
+			display: inline-block;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			font-family:"myriad-pro-n6", "myriad-pro-1", "myriad-pro-2";
+			font-size: 12pt;	
+		}
+		
+		#footerinstallbtn {
+			margin: 0; 
+		}
+		
+		.last {
+			margin-right: 0;
+		}
+    
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <header>
+        <div id="skuidheader" class="container darkgrey shadow"> 
+			<div class="row">
+				<div class="threecol">
+					<div id="logowrapper">
+						<a href="http://skuidify.com">						
+							<img src="http://skoodat.force.com/resource/1352990126000/SkuidLogoWhite" />
+						</a>
+					</div>				
+				</div>
+				<div class="ninecol last">
+					<div class="iconcontainer">
+						<div class="socialiconwrapper">
+							<a href="http://community.skuidify.com/" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/getsatisfaction.png" alt="Community" title="Community"/>
+								<div>Community</div>
+						 	</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://youtube.com/user/SkuidVids" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/youtube.png" alt="Videos" title="Videos" />
+								<div>Videos</div>				
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://help.skuidify.com" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/screenstepslive.png" alt="Tutorials" title="Tutorials" />
+								<div>Tutorials</div>						
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://skuidify.github.com/skuid" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/github.png" alt="Developer Guide" title="Developer Guide" />
+								<div>Developer<br/>Guide</div>						
+							</a>
+						</div>
+					</div>
+							
+					<div class="iconcontainer">
+						<div class="socialiconwrapper">
+							<a href="http://blog.skuidify.com" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/blogger.png" alt="Blog" title="Blog" />
+								<div>Blog</div>						
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://facebook.com/skuidify" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/facebook.png" alt="Facebook" title="Facebook" />
+								<div>Facebook</div>
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://twitter.com/skuidify" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/twitter.png" alt="Twitter" title="Twitter" />
+								<div>Twitter</div>
+							</a>
+						</div>
+						<div class="socialiconwrapper last">
+							<a href="#">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/linkedin.png" alt="LinkedIn" title="LinkedIn" />
+								<div>LinkedIn</div>
+							</a>
+						</div>
+					</div>							
+				</div>
+			</div>
+		</div>
+        
+        
         <a href="http://skuidify.github.com/skuid"><img src="images/skuid.png"/></a>
         <p>Scalable Kit for User Interface Development</p>
         <p class="view"><a href="http://github.com/skuidify/skuid">View the Project on GitHub</a></p>
@@ -36,3 +461,4 @@
     <script src="javascripts/scale.fix.js"></script>
   </body>
 </html>
+
