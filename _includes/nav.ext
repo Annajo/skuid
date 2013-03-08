@@ -26,4 +26,4 @@
 	<a {% if page.url == '/samplecalendar.html' %}class="active" {% endif %}href="/skuid/samplecalendar.html">Calendar Component</a>
 	{% endif %}
 </div>
-<small style="line-height: 18px; display: block;">To submit bugs, enhancement requests, or if you just have a question, please add it to the github <a style="display: inline;" href="https://github.com/skuidify/skuid/issues">issue tracker</a> for this project.</small>
+<p style="font-size: 10pt; line-height: 13pt; display: block; margin: 15px 0;">To submit bugs, feature requests, or if you just have a question, please log on to our new Get Satisfaction <a style="display: inline;" href="http://community.skuidify.com" target="_blank">Community</a> website. We want to hear from you!</p>
