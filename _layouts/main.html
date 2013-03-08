@@ -3,36 +3,211 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{% if page.title %}{{ page.title }} |{% endif %} Skuid by Skoodat</title>
-    
-    <link rel="stylesheet" href="stylesheets/styles.css">
+    <title>{% if page.title %}{{ page.title }} |{% endif %} Skuid</title>
+   
+     <!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<link rel="stylesheet" href="http://skuid.force.com/resource/1360695993000/CssGridIECSS" type="text/css" media="screen" />
+	<![endif]--> 
+	
+    <!--<link rel="stylesheet" href="stylesheets/styles.css">-->
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="http://skuid.force.com/resource/1354132326000/CssGrid1140CSS">
+    <link rel="stylesheet" href="http://skuid.force.com/resource/1360860789000/SkuidifyCSS">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript" src="//use.typekit.net/pdq6ygp.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
+    <style>
+		
+		/* github-specific */
+    	h1:first-child, h2:first-child {
+			margin-top: 0;
+		}
+		
+		.socialiconwrapper div {
+			margin-top: -4px;
+		}		
+		
+		h4 {
+			font-size: 12pt;
+			margin: 35px 0 15px;
+			text-transform: uppercase;
+		}
+
+		code {
+			font-size: 11pt;
+			font-weight: bold;
+			color: black;
+		}
+		
+		pre > code {
+			font-weight: normal;
+		}
+			
+		h4 + p, h5 + p {
+			font-size: 11pt;
+			margin: 5px 0 20px;
+			color: #666;
+			background-color: #EDEDED;
+			padding: 10px;
+			border-radius: 5px;
+		}
+				
+		ul li, ol li {
+			margin-left: 25px;
+		}
+		
+		.nav {
+			font-size: 12pt;
+			line-height: 22pt;
+		}
+		
+		.nav .active {
+			font-weight: bold;
+		}
+		
+		.subnav a {
+			display: block;
+			margin-left: 15px;
+		}
+		
+			
+		/* from style.css */
+		pre {
+			color: #333;
+			background-color: #EDEDED;
+			padding: 10px;
+			border-radius: 5px;
+			overflow-x: auto;
+		}
+		
+    </style>
+    
+
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <a href="http://skuidify.github.com/skuid"><img src="images/skuid.png"/></a>
-        <p>Scalable Kit for User Interface Development</p>
-        <p class="view"><a href="http://github.com/skuidify/skuid">View the Project on GitHub</a></p>
-        <ul>
-          <li><a href="http://help.skuidify.com/">Skuid Admin<strong>Reference</strong></a></li>
-          <li><a href="http://www.skoodat.com">About<strong>Skoodat</strong></a></li>
-          <li><a href="http://github.com/skuidify/skuid">View On<strong>GitHub</strong></a></li>
-        </ul>
-        <div class="nav">
-        	{% include nav.ext %}
-        </div>
-      </header>
-      <section>
-      	{{ content | unindent | markdownify }}
-      <footer>
-        
-      </footer>
+		<div id="header" class="container darkgrey shadow"> 
+			<div class="row">
+				<div class="threecol">
+					<div id="logowrapper">
+						<a href="http://skuidify.com">						
+							<img src="http://skoodat.force.com/resource/1352990126000/SkuidLogoWhite" />
+						</a>
+					</div>				
+				</div>
+				<div class="ninecol last">
+					<div class="iconcontainer">
+						<div class="socialiconwrapper">
+							<a href="http://community.skuidify.com/" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/getsatisfaction.png" alt="Community" title="Community"/>
+								<div>Community</div>
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://youtube.com/user/SkuidVids" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/youtube.png" alt="Videos" title="Videos" />
+								<div>Videos</div>				
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://help.skuidify.com" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/screenstepslive.png" alt="Tutorials" title="Tutorials" />
+								<div>Tutorials</div>						
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://skuidify.github.com/skuid" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/github.png" alt="Developer Guide" title="Developer Guide" />
+								<div>Developer<br/>Guide</div>						
+							</a>
+						</div>
+					</div>
+							
+					<div class="iconcontainer">
+						<div class="socialiconwrapper">
+							<a href="http://blog.skuidify.com" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/blogger.png" alt="Blog" title="Blog" />
+								<div>Blog</div>						
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://facebook.com/skuidify" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/facebook.png" alt="Facebook" title="Facebook" />
+								<div>Facebook</div>
+							</a>
+						</div>
+						<div class="socialiconwrapper">
+							<a href="http://twitter.com/skuidify" target="_blank">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/twitter.png" alt="Twitter" title="Twitter" />
+								<div>Twitter</div>
+							</a>
+						</div>
+						<div class="socialiconwrapper last">
+							<a href="#">
+								<img src="http://skoodat.force.com/resource/1352737900000/SocialIcons/linkedin.png" alt="LinkedIn" title="LinkedIn" />
+								<div>LinkedIn</div>
+							</a>
+						</div>
+					</div>							
+				</div>
+			</div>
+		</div>
+		<div class="container white abovefooter">
+			<div class="row top bottom">
+				<div class="fourcol">		
+					<h2>Skuid Developer Guide</h2>
+					<div class="nav">
+						{% include nav.ext %}
+					</div>
+					<p class="view"><a href="http://github.com/skuidify/skuid">View the Project on GitHub</a></p>
+				</div>
+				<div class="eightcol last">
+					<section>
+						{{ content | unindent | markdownify }}
+					</section>
+				</div>
+			</div>
+		</div>  
     </div>
+	
+	<div id="footer" class="container darkgrey shadow">
+		<div class="row top">
+			<div class="eightcol">
+				<div id="footernav">
+					<div class="item"><a href="http://www.skuidify.com/whatsinthebox">what's in the box?</a></div>
+					<div class="item"><a href="http://www.skuidify.com/about">about</a></div>
+					<div class="item"><a href="http://www.skuidify.com/faq">faq</a></div>
+					<div class="item"><a href="http://www.skuidify.com/partnerprogram">partners</a></div>                                      
+					<div class="item"><a href="http://www.skuidify.com/releasenotes">release notes</a></div>
+					<div class="item"><a href="https://na2.salesforce.com/resource/1362759011000/Skuid_MSA" target="msa">terms of service</a></div>
+					<div class="item"><a href="http://www.skuidify.com/privacy">privacy</a></div>
+					<div class="item"><a href="http://www.skuidify.com/security">security</a></div>
+				</div>
+			</div>
+			<div class="fourcol last">
+				<div>
+					<a href="http://appexchange.salesforce.com/listingDetail?listingId=a0N30000009wyDjEAI" target="_blank">
+						<div id="footerinstallbtn" class="btnsmall blue">install a 30-day free trial now</div>
+					</a>
+				</div>      
+			</div>
+		</div>
+		<div class="row">
+			<div class="twelvecol last">
+				<p style="margin-bottom: 0;"><strong style="color: white;">1 800 515 2535</strong> <span id="footeraddress">3001 Broad Street <span style="margin:0 7px">Suite 207</span> Chattanooga, TN 37408</span></p>
+	
+				<p style="margin-top: 0;">© Copyright 2013 Skuid. All rights reserved. Skuid and all other product names and feature names are trademarks or service marks of Skuid. 
+				Force.com, Visualforce, and Chatter are trademarks of salesforce.com, inc.</p>
+			</div>
+		</div>      
+	</div>  
     <script src="javascripts/scale.fix.js"></script>
   </body>
 </html>
