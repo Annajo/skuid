@@ -6,13 +6,38 @@ title: skuid.snippet
 skuid.snippet Object
 =================
 The snippet object allows components to register bits of javascript code that
-can be called by other components.  This is used when you want one component
-to be able to extend the functionality of another component.
+can be used to extend various aspects of Skuid functionality. 
 
-Snippets can be executed by Custom Actions in the PageTitle and Table components. In the 'Snippet' field, enter the name of the Snippet you'd like the Action to execute, and that Snippet's snippetFunction will be run when that Action is executed.
+Snippets can be easily added to any page by going to the "Resources" tab's "JavaScript" area, and creating a new JavaScript Resource of type "Inline (Snippet)". You can then give your snippet a name, and define the JavaScript code that will be executed when the snippet is run. Skuid will then automatically register this JavaScript Resource as a Snippet using the name you selected.
+
+The following areas of Skuid allow snippets to be used to provide custom behavior:
+
+ - PageTitle Actions: when you create a new PageTitle component Action, set the Action's Type to "Custom". You will then be asked to enter the name of a Snippet that you would like to run whenever this PageTitle Action is clicked. 
+ - Table Actions: when you create a new Table component Action, either a Row, Global, or Mass Action, you can set the Action's Type to "Custom". You will then be asked to enter the name of a Snippet that you would like to run whenever this Action is clicked.
+ - Field Renderers: while all Skuid Ui Fields have a default renderer (and some Fields even have built-in alternative renderers, e.g. you can render a Picklist as Radio Buttons - try it!), you can always use Snippets to define custom field renderer logic.
+ - Filter Option Sources: a snippet can be used to populate the options of a Skuid Filter, rather than pulling the options from a Model, field metadata, or adding them manually.
 
 ## Methods
 ##### `registerSnippet( snippetName, snippetFunction )`
 Register the `snippetFunction` under the name `snippetName`. To avoid snippet name conflicts, you should prefix a namespace to `snippetName`, e.g. 'acme.MyAwesomeSnippet'
 ##### `getSnippet( snippetName )`
-Retrieve a code snippet. 
+Retrieve a code snippet.
+
+<!---
+#### Examples
+
+{% highlight javascript %}
+// 1. A custom Global Action snippet
+// 2. Mass Action snippet - copy emails and display alert
+// 3. Mass Action snippet - complex update logic on all selected rows, or Closing Tasks.
+// 4. Run a custom button action, like a Conga merge.
+
+
+var mymodel = skuid.model.getModel('ExampleModel');
+
+// Get the first row of the model
+var firstrow = mymodel.getFirstRow();
+
+{% endhighlight %}
+
+-->
