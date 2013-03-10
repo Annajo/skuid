@@ -12,10 +12,13 @@ Snippets can be easily added to any page by going to the "Resources" tab's "Java
 
 The following areas of Skuid allow snippets to be used to provide custom behavior:
 
- - PageTitle Actions: when you create a new PageTitle component Action, set the Action's Type to "Custom". You will then be asked to enter the name of a Snippet that you would like to run whenever this PageTitle Action is clicked. 
- - Table Actions: when you create a new Table component Action, either a Row, Global, or Mass Action, you can set the Action's Type to "Custom". You will then be asked to enter the name of a Snippet that you would like to run whenever this Action is clicked.
- - Field Renderers: while all Skuid Ui Fields have a default renderer (and some Fields even have built-in alternative renderers, e.g. you can render a Picklist as Radio Buttons - try it!), you can always use Snippets to define custom field renderer logic.
- - Filter Option Sources: a snippet can be used to populate the options of a Skuid Filter, rather than pulling the options from a Model, field metadata, or adding them manually.
+ - **PageTitle Actions**: when you create a new PageTitle component Action, set the Action's Type to "Custom". You will then be asked to enter the name of a Snippet that you would like to run whenever this PageTitle Action is clicked. 
+ 
+ - **Table Actions**: when you create a new Table component Action, either a Row, Global, or Mass Action, you can set the Action's Type to "Custom". You will then be asked to enter the name of a Snippet that you would like to run whenever this Action is clicked.
+ 
+ - **Field Renderers**: while all Skuid Ui Fields have a default renderer (and some Fields even have built-in alternative renderers, e.g. you can render a Picklist as Radio Buttons - try it!), you can always use Snippets to define custom field renderer logic.
+ 
+ - **Filter Option Sources**: a snippet can be used to populate the options of a Skuid Filter, rather than pulling the options from a Model, field metadata, or adding them manually.
 
 ## Methods
 ##### `registerSnippet( snippetName, snippetFunction )`
@@ -25,8 +28,15 @@ Retrieve a code snippet.
 
 #### Examples
 ### 1. Custom Field Renderer: Numeric Slider
+The following
 
 {% highlight javascript %}
+
+
+// ** For NON-inline snippets, wrap all of the following in a `registerSnippet` declaration **, e.g.
+// skuid.snippet.registerSnippet('integerSlider',function(field,value){
+//    /* snippet code */
+// });
 
 // **COPY ALL OF THE FOLLOWING INTO THE BODY OF AN INLINE SNIPPET**
 
@@ -59,6 +69,9 @@ if (field.mode == 'read') {
 
 	field.element.append(slider);
 }
+
+// ** END INLINE SNIPPET BODY**
+
 {% endhighlight %}
 
 <!---
@@ -72,9 +85,5 @@ var mymodel = skuid.model.getModel('ExampleModel');
 
 // Get the first row of the model
 var firstrow = mymodel.getFirstRow();
-
--->
-
-
 
 -->
