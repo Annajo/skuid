@@ -41,33 +41,33 @@ The following
 // **COPY ALL OF THE FOLLOWING INTO THE BODY OF AN INLINE SNIPPET**
 
 var field = arguments[0],
-    value = arguments[1];
+   value = arguments[1];
 
 if (field.mode == 'read') {
-	// For Read mode, just use the standard Integer read-mode renderer
-    skuid.ui.fieldRenderers.INTEGER.read(field,value);
+   // For Read mode, just use the standard Integer read-mode renderer
+   skuid.ui.fieldRenderers.INTEGER.read(field,value);
 } else if (field.mode == 'edit') {
    // For Edit mode, render a jQuery ui slider 
-    // with step size 1 and boundary range [0,10].
-    // Whenever this slider is updated,
-    // the data row in context will be updated as well.
-    var slider = $j('<div>').slider({
+   // with step size 1 and boundary range [0,10].
+   // Whenever this slider is updated,
+   // the data row in context will be updated as well.
+   var slider = $j('<div>').slider({
       value:value || 0,
       min: 0,
       max: 10,
       step: 1,
       slide: function( event, ui ) {
-        // Update our model with the new value
-        field.model.updateRow(
-			field.row,
-			field.id,
-			ui.value,
-			{ initiatorId : field._GUID}
-		);
-      }
-    });
+         // Update our model with the new value
+         field.model.updateRow(
+            field.row,
+            field.id,
+            ui.value,
+            { initiatorId : field._GUID}
+         );
+       }
+   });
 
-	field.element.append(slider);
+   field.element.append(slider);
 }
 
 // ** END INLINE SNIPPET BODY**
