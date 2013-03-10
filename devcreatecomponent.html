@@ -22,7 +22,7 @@ Let your creativity run free! We're sure you'll surprise us with your ideas.
 Now, on to the nuts and bolts.
 
 ## Your First Component
-For Skuid to know about your custom component type, you'll need to register them either in (A) JavaScript or (B) Apex.
+For Skuid to know about your custom component type, you'll need to register it *either* in **(A) JavaScript** or **(B) Apex**.
 
 ### Method A: Register your Component in JavaScript
 To register a Skuid component type from JavaScript, you'll have to include a line of JavaScript that calls the `skuid.componentType.register` API method. You can include your component type in a given Skuid Page by adding it to your page's JavaScript Resources using the Resources Tab. For convenience, Skuid has a type of JavaScript Resource called "Inline (Component)" which automatically wraps your component type definition in the `skuid.componentType.register` API method, and includes it in the JavaScript loaded by your page.
@@ -34,12 +34,17 @@ The benefits of registering a component from JavaScript are:
 
 {% highlight javascript %}
 
-skuid.componentType.register('sayhello',function(element,xmlDef){
+skuid.componentType.register("sayhello",function(element,xmlDef){
 
    // Set the HTML content of the DOM element we were handed
-   to be the phrase "Hello World!" (pulled from a Custom Label), 
-   // styled in bold
-   element.html("<b>"+skuid.label.read("Say_Hello")+"</b>");
+   // to be the phrase "Hello " (pulled from a Custom Label), 
+   // plus the name of a person that was specified in the XML Definition
+   // of our component. Then we wrap it all in bold.
+   element.html(
+      "<b>"
+      + skuid.label.read("Say_Hello")+ " " + xmlDef.attr("person")
+      + "</b>"
+   );
 
 });
 
@@ -77,7 +82,10 @@ public with sharing class HelloWorld extends skuid.SkuidponentImpl {
       // on our component
       this.jsOutput = ';skuid.componentType.register("sayhello",'
       	+ 'function(el,xmlDef){'
-      	+     'el.html("<b>"+skuid.label.read("Say_Hello")+"</b>");'
+      	+     'el.html('
+      	+          '"<b>"+skuid.label.read("Say_Hello")'
+      	+          '+" " + xmlDef.attr("person") + "</b>"'
+      	+     ');'
       	+ '});';
       
     }
@@ -87,11 +95,11 @@ public with sharing class HelloWorld extends skuid.SkuidponentImpl {
 {% endhighlight %}
 
 ### Register your Component's Builder in JavaScript (optional)
-For your Component to show up in the Skuid Page Builder, you'll need to define a 'Builder' for your Component in JavaScript. 
+For this basic component tutorial, we'll add just one degree of flexibility to our component: the name of the person to say hello to. To introduce flexibility to our component, we have to have the component show up in our Skuid Page Builder, and add at least one customizable *attribute* to the component's *properties editor*.
 
-This JavaScript will need to be stored in a single Static Resource that contains all of the JavaScript for all of the Components in your Module (see [Creating a Skuid Module](http://plusplusben.github.com/skuid/devcreatemodule.html)). This Static Resource must be named '&lt;ModuleName&gt;BuildersJS' for Skuid to pick up on it. For instance, if your Module Name is 'recruiting', this file should be called 'RecruitingBuildersJS'. 
+For your component to show up in the Skuid Page Builder, you'll need to define a 'Builder' for your Component in JavaScript, and this JavaScript will need to be located in a single Static Resource that contains all of the JavaScript for all of the Components in your Module (see [Creating a Skuid Module](http://plusplusben.github.com/skuid/devcreatemodule.html)). This Static Resource must be named '&lt;ModuleName&gt;BuildersJS' for Skuid to pick up on it. For instance, if your Module Name is 'recruiting', this file should be called 'RecruitingBuildersJS'. 
 
-So what should this 'Builder' file look like? Here's a stripped-down example (for more detail, see our sample Map component and the [skuid.builder API docs](http://plusplusben.github.com/skuid/apibuilder.html)):
+So what should this 'Builder' file look like? Here's a stripped-down example (for more detail, see our sample Map component and the [skuid.builder API docs](http://skuidify.github.com/skuid/apibuilder.html)):
 
 {% highlight javascript %}
 
@@ -101,16 +109,30 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
 	id : 'sayhello',
 	name : 'Say Hello',
 	icon : 'ui-silk-tux',
-	description : 'This component says Hello World to Penguins.',
+	description : 'This component says Hello to someone.',
 	componentRenderer: function(component) {
 		var self = component;			
 		component.header.html(component.builder.name);
 	},
 	propertiesRenderer : function (propertiesObj,component) {
-		propertiesObj.header.text('Hello World Component Properties');
+		propertiesObj.header.text('Say Hello Component Properties');
+		
+		var propsList = [
+			{
+				id : 'person',
+				type : 'string',
+				label : 'Person to say Hello to',
+				helptext : 'Pick a name, any name!'
+			}
+		];
+		
+        propertiesObj.body.append(
+            skuid.builder.buildPropsEditor(component.state,propsList)
+        );
+		
 	},
 	defaultStateGenerator : function() {
-		return $('<sayhello>');
+		return skuid.utils.makeXMLDoc('<sayhello person="Penguins">');
 	}
 }));
 
@@ -118,7 +140,7 @@ skuid.builder.registerBuilder(new skuid.builder.Builder({
 
 {% endhighlight %}
 
-That's it! Save this file as the body of your '&lt;ModuleName&gt;BuildersJS' Static Resource, and a Component called 'Hello World' will show up in the 'Components' tab of the Skuid Page Builder.
+That's it! Save this file as the body of your '&lt;ModuleName&gt;BuildersJS' Static Resource, and a Component called 'Say Hello' (with a cute Penguin icon) will show up in the 'Components' tab of the Skuid Page Builder.
 
 ## Going Deeper
 ### Make your Component a jQuery plugin
