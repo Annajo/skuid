@@ -41,9 +41,7 @@ skuid.componentType.register("sayhello",function(element,xmlDef){
    // plus the name of a person that was specified in the XML Definition
    // of our component. Then we wrap it all in bold.
    element.html(
-      "<b>"
-      + skuid.label.read("Say_Hello")+ " " + xmlDef.attr("person")
-      + "</b>"
+      "<b>Hello " + xmlDef.attr("person") + "</b>"
    );
 
 });
@@ -67,7 +65,7 @@ public with sharing class HelloWorld extends skuid.SkuidponentImpl {
       // that this component type will make use of 
       // from within JavaScript
       // using skuid.label.read(labelName).
-      // Here, our label 'Say_Hello' contains the text 'Hello World!'
+      // Here, our label 'Say_Hello' contains the text 'Hello '
       this.customLabels = new Set<String>{
          'Say_Hello'
       };
