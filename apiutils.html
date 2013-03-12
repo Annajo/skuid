@@ -92,8 +92,9 @@ skuid.utils.registerPlugin('pluginName',methods);
 True if this Salesforce.com organization / environment has the Multi-Currency feature enabled.
 ##### `organizationId`
 The Id of the Salesforce.com organization / environment.
-##### `userInfo`
-An object containing various fields from the running user's User object, including:
+
+
+##### `userInfo` - An object containing various fields from the running user's User object, including:
 
   - `defaultCurrency` (e.g. "USD")
   
@@ -111,8 +112,9 @@ An object containing various fields from the running user's User object, includi
   
   - `userId`  (the running user's Id)
 
-##### `userLocale`
-An object containing various fields describing the running user's Locale, including:
+
+##### `userLocale` - An object containing various fields describing the running user's Locale, including:
+
 
   - `dateFormat` (e.g. "m/d/yy", where "m" is month, "d" is day in month, "y" is the year. Use multiple to force prepending zeros, if possible, or the full year)
   
