@@ -91,14 +91,14 @@ var output = $('#output');
  * 1. Global merge examples
  */
 
-var template = '<b>`{{$Model.Opportunities.labelPlural}}` Tab</b>';
+var template = '<b>`\{\{$Model.Opportunities.labelPlural\}\}` Tab</b>';
 output.append(
    skuid.utils.merge('global',template)
 );
 
 // --> displays 'Opportunities Tab', or the localized equivalent
 
-template = '{{$Model.Account.fieldsMap.Name.label}}: {{#$Model.Account.data}}{{Name}}{{/$Model.Account.data}}';
+template = '\{\{$Model.Account.fieldsMap.Name.label\}\}: \{\{#$Model.Account.data\}\}\{\{Name\}\}\{\{/$Model.Account.data\}\}';
 output.append(
    skuid.utils.merge('global',template)
 );
@@ -117,9 +117,9 @@ template = '<table>';
 // by pulling from the metadata of each 3 fields in our Model,
 
 template += '<thead>';
-template += '<th>`{{Model.Fields.Name.label}}`</th>';
-template += '<th>{{Model.Fields.StageName.label}}</th>';
-template += '<th>{{Model.Fields.CloseDate.label}}</th>';
+template += '<th>\{\{Model.Fields.Name.label\}\}`</th>';
+template += '<th>\{\{Model.Fields.StageName.label\}\}</th>';
+template += '<th>\{\{Model.Fields.CloseDate.label\}\}</th>';
 template += '</thead>';
 
 // We'll populate the body of our table
@@ -128,15 +128,15 @@ template += '</thead>';
 // and creating <td> cells populated with each rows corresponding data.
 template += '<tbody>'
 
-template += '{{#Model.Data}}';
-template += '<tr><td>{{Name}}</td><td>{{StageName}}</td><td>{{CloseDate}}</td></tr>';
-template += '{{/Model.Data}}';
+template += '\{\{#Model.Data\}\}';
+template += '<tr><td>\{\{Name\}\}</td><td>\{\{StageName\}\}</td><td>\{\{CloseDate\}\}</td></tr>';
+template += '\{\{/Model.Data\}\}';
 
 // If we have NO data rows,
 // we'll using Mustache's inverted section syntax to display a message
-template += '{{^Model.Data}}';
+template += '\{\{^Model.Data\}\}';
 template += '<tr><td colspan="3">There are no Opportunities to display on this Account.</td></tr>';
-template += '{{/Model.Data}}';
+template += '\{\{/Model.Data\}\}';
 
 template += '</tbody>';
 template += '</table>';
