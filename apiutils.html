@@ -130,7 +130,11 @@ template += '</thead>';
 template += '<tbody>'
 
 template += '{{#Model.Data}}';
-template += '<tr><td>{{Name}}</td><td>{{StageName}}</td><td>{{CloseDate}}</td></tr>';
+template += '<tr>';
+template += '<td>{{Name}}</td>';
+template += '<td>{{StageName}}</td>';
+template += '<td>{{CloseDate}}</td>';
+template += '</tr>';
 template += '{{/Model.Data}}';
 
 // If we have NO data rows,
