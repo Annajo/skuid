@@ -73,6 +73,23 @@ Performs Skuid merge logic, using MustacheJS syntax, in one of three contexts:
  
 
 
+The following "global" merge variables are available in ANY of the merge contexts:
+
+  - `$Label.<labelName>`: inserts a localized Custom Label named `labelName`
+  
+  - `$Model.<modelId>`: navigates you into the context a Skuid Model whose id is `modelId`
+  
+  - `$Param.<urlParameterKey>`: inserts the value of the current page's URL parameter named `urlParameterKey`, e.g. `{{$Param.contactId}}`
+  
+ 
+ The following "row" merge variables are only available in the **row** merge context:
+ 
+   - `first`: true if this is the first Row in the Model's data
+   
+   - `last`: true if this is the last Row in the Model's data  
+   
+   - `index`: returns the index of this row in the Model's data
+
 ##### `generateGUID(  )`
 Generates a Skuid-unique component identifier.
 ##### `registerPlugin( name, methods )`
@@ -94,7 +111,8 @@ True if this Salesforce.com organization / environment has the Multi-Currency fe
 The Id of the Salesforce.com organization / environment.
 
 
-##### `userInfo` - An object containing various fields from the running user's User object, including:
+##### `userInfo`
+An object containing various fields from the running user's User object, including:
 
   - `defaultCurrency` (e.g. "USD")
   
@@ -113,7 +131,8 @@ The Id of the Salesforce.com organization / environment.
   - `userId`  (the running user's Id)
 
 
-##### `userLocale` - An object containing various fields describing the running user's Locale, including:
+##### `userLocale`
+An object containing various fields describing the running user's Locale, including:
 
 
   - `dateFormat` (e.g. "m/d/yy", where "m" is month, "d" is day in month, "y" is the year. Use multiple to force prepending zeros, if possible, or the full year)
