@@ -83,6 +83,7 @@ For these examples, we'll assume that we have a Skuid Page with 3 Models:
  
  {% highlight javascript %}
 
+<script>
 // Define the DOM element we want to write to
 var output = $('#output');
 
@@ -91,7 +92,7 @@ var output = $('#output');
  * 1. Global merge examples
  */
 
-var template = '<b>`\{\{$Model.Opportunities.labelPlural\}\}` Tab</b>';
+var template = '<b>&#123;&#123;$Model.Opportunities.labelPlural&#125;&#125; Tab</b>';
 output.append(
    skuid.utils.merge('global',template)
 );
@@ -117,7 +118,7 @@ template = '<table>';
 // by pulling from the metadata of each 3 fields in our Model,
 
 template += '<thead>';
-template += '<th>\{{Model.Fields.Name.label\}}`</th>';
+template += '<th>\{\{Model.Fields.Name.label\}\}</th>';
 template += '<th>\{\{Model.Fields.StageName.label\}\}</th>';
 template += '<th>\{\{Model.Fields.CloseDate.label\}\}</th>';
 template += '</thead>';
