@@ -75,11 +75,11 @@ Performs Skuid merge logic, using MustacheJS syntax, in one of three contexts:
 
 The following "global" merge variables are available in ANY of the merge contexts:
 
-  - `$Label.<labelName>`: inserts a localized Custom Label named `labelName`
+  - `$Label.labelName`: inserts a localized Custom Label named `labelName`
   
-  - `$Model.<modelId>`: navigates you into the context a Skuid Model whose id is `modelId`
+  - `$Model.modelId`: navigates you into the context a Skuid Model whose id is `modelId`
   
-  - `$Param.<urlParameterKey>`: inserts the value of the current page's URL parameter named `urlParameterKey`, e.g. `{{$Param.contactId}}`
+  - `$Param.urlParameterKey`: inserts the value of the current page's URL parameter named `urlParameterKey`, e.g. `{{$Param.contactId}}`
   
  
  The following "row" merge variables are only available in the **row** merge context:
