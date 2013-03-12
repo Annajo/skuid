@@ -81,7 +81,8 @@ For these examples, we'll assume that we have a Skuid Page with 3 Models:
  
  3. "Opportunities" - all Opportunities on the Account in our first Model.
  
- {% highlight javascript %}
+{% highlight javascript %}
+{% raw %}
 
 // Define the DOM element we want to write to
 var output = $('#output');
@@ -145,7 +146,7 @@ output.append(
    skuid.utils.merge('model',template,{},skuid.model.getModel('Opportunities'))
 );
 
-
+{% endraw %}
 {% endhighlight %}
  
  
