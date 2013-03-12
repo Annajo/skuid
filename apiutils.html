@@ -73,9 +73,6 @@ Performs Skuid merge logic, using MustacheJS syntax, in one of three contexts:
  
  
 
-
-##### `generateGUID(  )`
-Generates a Skuid-unique component identifier.
 ##### `generateGUID(  )`
 Generates a Skuid-unique component identifier.
 ##### `registerPlugin( name, methods )`
@@ -93,26 +90,32 @@ skuid.utils.registerPlugin('pluginName',methods);
 
 ##### `isMultiCurrencyOrganization`
 True if this Salesforce.com organization / environment has the Multi-Currency feature enabled.
-
 ##### `organizationId`
 The Id of the Salesforce.com organization / environment.
-
 ##### `userInfo`
 An object containing various fields from the running user's User object, including:
 
   - `defaultCurrency` (USD)
+  
   - `firstName` (John)
+  
   - `language` (en_GB)
+  
   - `lastName` (Smith)
+  
   - `locale` (fr_FR)
+  
   - `name` (John Smith)
+  
   - `profileId` (User.ProfileId)
+  
   - `userId`  (User.Id)
 
 ##### `userLocale`
 An object containing various fields describing the running user's Locale, including:
 
   - `dateFormat` (e.g. "m/d/yy", where "m" is month, "d" is day in month, "y" is the year. Use multiple to force prepending zeros, if possible, or the full year)
+  
   - `decimalsSeparator` (the character used to distinguish the "decimal" part of a number from the integer part, e.g. ".")
   - `defaultCurrency` (the 3-digit ISO code of the locale's default currency, e.g. "USD")
   - `firstDay` (the integer index of the first day of the locale's calendar week, with Sunday being 0)
