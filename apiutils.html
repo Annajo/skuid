@@ -56,10 +56,111 @@ Returns the number of items contained in the SelectList.
 The skuid.utils object provides convenience methods for commonly used functionality
 in Skuid.
 ## METHODS
+
+##### `convertCurrency( value, fromIsoCode, toIsoCode )`
+Converts a currency value from one ISO currency to another, based on the conversion rates defined in the Salesforce.com organization. Only available for Multi-Currency organizations)
 ##### `decodeHTML( value )`
 Decodes html characters like &amp;amp; into their actual character.
 ##### `encodeHTML( value )`
 Encodes html characters like & into their encoded value like &amp;amp;.
+##### `escapeSingleQuotes( value )`
+Escapes single quotes in a string.
+##### `merge( mode, template [,options] [,model] [,row] )`
+Performs Skuid merge logic, using MustacheJS syntax, in one of three contexts:
+ 1. "global": no specific Model or Row context is expected.
+ 2. "model": a specific Model context is expected, but not a Row.
+ 3. "row": a specific Model and Row context is expected.
+ 
+ ### Examples
+ 
+For these examples, we'll assume that we have a Skuid Page with 3 Models:
+
+ 1. "Account" - limited to one Account, with various Account fields pulled in
+ 2. "Contacts" - all Contacts on the Account in our first Model.
+ 3. "Opportunities" - all Opportunities on the Account in our first Model.
+ 
+{% highlight javascript %}
+
+// Define the DOM element we want to write to
+var output = $('#output');
+
+/*
+ * 1. Global merge examples
+ */
+
+var template = '<b>{{$Model.Opportunities.labelPlural}} Tab<b/>';
+output.append(
+   skuid.utils.merge('global',template)
+);
+
+// --> displays 'Opportunities Tab', or the localized equivalent
+
+template = '{{$Model.Account.fieldsMap.Name.label}}: {{#$Model.Account.data}}{{Name}}{{/$Model.Account.data}}';
+output.append(
+   skuid.utils.merge('global',template)
+);
+
+// --> displays 'Account Name: ACME Recruiting'
+
+
+/*
+ * 2. Model merge examples
+ */
+
+// We'll build an HTML table.
+template = '<table>';
+
+// We'll populate the headers of each table column
+// by pulling from the metadata of each 3 fields in our Model,
+
+template += '<thead>';
+template += '<th>{{Model.Fields.Name.label}}</th>';
+template += '<th>{{Model.Fields.StageName.label}}</th>';
+template += '<th>{{Model.Fields.CloseDate.label}}</th>';
+template += '</thead>';
+
+// We'll populate the body of our table
+// by looping over the data rows in our Model,
+// using Mustache section syntax,
+// and creating <td> cells populated with each rows corresponding data.
+template += '<tbody>'
+
+template += '{{#Model.Data}}';
+template += '<tr><td>{{Name}}</td><td>{{StageName}}</td><td>{{CloseDate}}</td></tr>';
+template += '{{/Model.Data}}';
+
+// If we have NO data rows,
+// we'll using Mustache's inverted section syntax to display a message
+template += '{{^Model.Data}}';
+template += '<tr><td colspan="3">There are no Opportunities to display on this Account.</td></tr>';
+template += '{{/Model.Data}}';
+
+template += '</tbody>';
+template += '</table>';
+
+output.append(
+   skuid.utils.merge('model',template,{},skuid.model.getModel('Opportunities'))
+);
+
+{% endhighlight %}
+
+The following "global" merge variables are available in ANY of the merge contexts:
+
+  - **`$Label.<labelName>`**: inserts a localized Custom Label named `labelName`
+  - **`$Model.<modelId>`**: navigates you into the context a Skuid Model whose id is `modelId`
+  - **`$Param.<urlParameterKey>`**: inserts the value of the current page's URL parameter named `urlParameterKey`, e.g. `{{$Param.contactId}}`
+ 
+ The following "row" merge variables are only available in the **row** merge context:
+ 
+   - `first`: true if this is the first Row in the Model's data
+   - `last`: true if this is the last Row in the Model's data  
+   - `index`: returns the index of this row in the Model's data
+
+
+##### `generateGUID(  )`
+Generates a Skuid-unique component identifier.
+##### `generateGUID(  )`
+Generates a Skuid-unique component identifier.
 ##### `registerPlugin( name, methods )`
 Registers a jQuery plugin in the standard skuid component format.
 {% highlight javascript %}
@@ -70,3 +171,39 @@ var methods = {
 };
 skuid.utils.registerPlugin('pluginName',methods);
 {% endhighlight %}
+
+## PROPERTIES
+
+##### `isMultiCurrencyOrganization`
+True if this Salesforce.com organization / environment has the Multi-Currency feature enabled.
+
+##### `organizationId`
+The Id of the Salesforce.com organization / environment.
+
+##### `userInfo`
+An object containing various fields from the running user's User object, including:
+
+  - `defaultCurrency` (USD)
+  - `firstName` (John)
+  - `language` (en_GB)
+  - `lastName` (Smith)
+  - `locale` (fr_FR)
+  - `name` (John Smith)
+  - `profileId` (User.ProfileId)
+  - `userId`  (User.Id)
+
+##### `userLocale`
+An object containing various fields describing the running user's Locale, including:
+
+  - `dateFormat` (e.g. "m/d/yy", where "m" is month, "d" is day in month, "y" is the year. Use multiple to force prepending zeros, if possible, or the full year)
+  - `decimalsSeparator` (the character used to distinguish the "decimal" part of a number from the integer part, e.g. ".")
+  - `defaultCurrency` (the 3-digit ISO code of the locale's default currency, e.g. "USD")
+  - `firstDay` (the integer index of the first day of the locale's calendar week, with Sunday being 0)
+  - `isRTL` (true if dates and time are written right-to-left in this locale)
+  - `localeName` (e.g. "English (United States)")
+  - `sfdcLocaleKey` (the Salesforce.com key for this Locale - not always ISO, e.g. "en_US")
+  - `showMonthAfterYear` (true if the month should be shown after the year in datepickers)
+  - `showTimeBeforeDate` (true if the time should be shown before the date in datepickers)
+  - `thousandsSeparator` (the character used to separate every 3 integer digits in this locale, e.g. ",")
+  - `timeFormat` (e.g. "h:mm a", where "h" is hour, "m" is minute, "a" is the AM/PM indicator. Use multiple to force prepending zeros, if possible)
+
