@@ -92,7 +92,7 @@ var output = $('#output');
  * 1. Global merge examples
  */
 
-var template = '<b>\u007B\u007B"$Model.Opportunities.labelPlural\u007B\u007B Tab</b>';
+var template = '<b>\{\{$Model.Opportunities.labelPlural\}\} Tab</b>';
 output.append(
    skuid.utils.merge('global',template)
 );
