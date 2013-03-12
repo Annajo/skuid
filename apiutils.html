@@ -71,16 +71,83 @@ Performs Skuid merge logic, using MustacheJS syntax, in one of three contexts:
  2. "model": a specific Model context is expected, but not a Row.
  3. "row": a specific Model and Row context is expected.
  
+### Examples
+ 
+For these examples, we'll assume that we have a Skuid Page with 3 Models:
+
+ 1. "Account" - limited to one Account, with various Account fields pulled in
+ 
+ 2. "Contacts" - all Contacts on the Account in our first Model.
+ 
+ 3. "Opportunities" - all Opportunities on the Account in our first Model.
+ 
+ {% highlight javascript %}
+
+// Define the DOM element we want to write to
+var output = $('#output');
 
 
-The following "global" merge variables are available in ANY of the merge contexts:
+/*
+ * 1. Global merge examples
+ */
 
-  - `$Label.labelName`: inserts a localized Custom Label named `labelName`
-  
-  - `$Model.modelId`: navigates you into the context a Skuid Model whose id is `modelId`
-  
-  - `$Param.urlParameterKey`: inserts the value of the current page's URL parameter named `urlParameterKey`, e.g. `{{$Param.contactId}}`
-  
+var template = '<b>{{$Model.Opportunities.labelPlural}} Tab</b>';
+output.append(
+   skuid.utils.merge('global',template)
+);
+
+// --> displays 'Opportunities Tab', or the localized equivalent
+
+template = '{{$Model.Account.fieldsMap.Name.label}}: {{#$Model.Account.data}}{{Name}}{{/$Model.Account.data}}';
+output.append(
+   skuid.utils.merge('global',template)
+);
+
+// --> displays 'Account Name: ACME Recruiting'
+
+
+/*
+ * 2. Model merge examples
+ */
+
+// We'll build an HTML table.
+template = '<table>';
+
+// We'll populate the headers of each table column
+// by pulling from the metadata of each 3 fields in our Model,
+
+template += '<thead>';
+template += '<th>{{Model.Fields.Name.label}}</th>';
+template += '<th>{{Model.Fields.StageName.label}}</th>';
+template += '<th>{{Model.Fields.CloseDate.label}}</th>';
+template += '</thead>';
+
+// We'll populate the body of our table
+// by looping over the data rows in our Model,
+// using Mustache section syntax,
+// and creating <td> cells populated with each rows corresponding data.
+template += '<tbody>'
+
+template += '{{#Model.Data}}';
+template += '<tr><td>{{Name}}</td><td>{{StageName}}</td><td>{{CloseDate}}</td></tr>';
+template += '{{/Model.Data}}';
+
+// If we have NO data rows,
+// we'll using Mustache's inverted section syntax to display a message
+template += '{{^Model.Data}}';
+template += '<tr><td colspan="3">There are no Opportunities to display on this Account.</td></tr>';
+template += '{{/Model.Data}}';
+
+template += '</tbody>';
+template += '</table>';
+
+output.append(
+   skuid.utils.merge('model',template,{},skuid.model.getModel('Opportunities'))
+);
+
+
+{% endhighlight %}
+ 
  
  The following "row" merge variables are only available in the **row** merge context:
  
