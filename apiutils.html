@@ -71,20 +71,15 @@ Performs Skuid merge logic, using MustacheJS syntax, in one of three contexts:
  2. "model": a specific Model context is expected, but not a Row.
  3. "row": a specific Model and Row context is expected.
  
- ### Examples
+### Examples
  
 For these examples, we'll assume that we have a Skuid Page with 3 Models:
 
  1. "Account" - limited to one Account, with various Account fields pulled in
- 2. "Contacts" - all Contacts on the Account in our first Model.
- 3. "Opportunities" - all Opportunities on the Account in our first Model.
  
-{% highlight javascript %}
-
-// Define the DOM element we want to write to
-var output = $('#output');
-
-{% endhighlight %}
+ 2. "Contacts" - all Contacts on the Account in our first Model.
+ 
+ 3. "Opportunities" - all Opportunities on the Account in our first Model.
 
 The following "global" merge variables are available in ANY of the merge contexts:
 
