@@ -91,7 +91,7 @@ var output = $('#output');
  * 1. Global merge examples
  */
 
-var template = '<b>{{$Model.Opportunities.labelPlural}} Tab</b>';
+var template = '<b>`{{$Model.Opportunities.labelPlural}}` Tab</b>';
 output.append(
    skuid.utils.merge('global',template)
 );
@@ -117,7 +117,7 @@ template = '<table>';
 // by pulling from the metadata of each 3 fields in our Model,
 
 template += '<thead>';
-template += '<th>{{Model.Fields.Name.label}}</th>';
+template += '<th>`{{Model.Fields.Name.label}}`</th>';
 template += '<th>{{Model.Fields.StageName.label}}</th>';
 template += '<th>{{Model.Fields.CloseDate.label}}</th>';
 template += '</thead>';
