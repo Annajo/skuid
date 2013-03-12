@@ -83,7 +83,6 @@ For these examples, we'll assume that we have a Skuid Page with 3 Models:
  
  {% highlight javascript %}
 
-<script>
 // Define the DOM element we want to write to
 var output = $('#output');
 
@@ -92,14 +91,14 @@ var output = $('#output');
  * 1. Global merge examples
  */
 
-var template = '<b>\{\{$Model.Opportunities.labelPlural\}\} Tab</b>';
+var template = '<b>{{$Model.Opportunities.labelPlural}} Tab</b>';
 output.append(
    skuid.utils.merge('global',template)
 );
 
 // --> displays 'Opportunities Tab', or the localized equivalent
 
-template = '\{\{$Model.Account.fieldsMap.Name.label\}\}: \{\{#$Model.Account.data\}\}\{\{Name\}\}\{\{/$Model.Account.data\}\}';
+template = '{{$Model.Account.fieldsMap.Name.label}}: {{#$Model.Account.data}}\{\{Name\}\}\{\{/$Model.Account.data\}\}';
 output.append(
    skuid.utils.merge('global',template)
 );
